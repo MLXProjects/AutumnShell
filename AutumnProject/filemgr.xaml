@@ -1,0 +1,21 @@
+﻿<Window x:Class="autumn.filemgr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="" Height="415" Width="448" Name="fmWin" Loaded="fmWin_Loaded">
+    <Grid>
+        <ListView Height="353" HorizontalAlignment="Left" Margin="0,31,0,0" Name="dirlist" VerticalAlignment="Top" Width="426">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Width="80" Height="100" >
+                        <Image Source="{Binding ImageData}" HorizontalAlignment="Center" Width="64" Height="64" />
+                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width=""/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="63,0,0,0" Name="pathBox" VerticalAlignment="Top" Width="321" IsEditable="True" Text="C:\" />
+        <Button Content="&lt;" Height="23" HorizontalAlignment="Left" Margin="6,-1,0,0" Name="backBtn" VerticalAlignment="Top" Width="23" IsEnabled="False" />
+        <Button Content="&gt;" Height="23" HorizontalAlignment="Left" Margin="34,-1,0,0" Name="nextBtn" VerticalAlignment="Top" Width="23" IsEnabled="False" />
+        <Button Content="-&gt;" Height="23" HorizontalAlignment="Left" Margin="390,0,0,0" Name="button1" VerticalAlignment="Top" Width="30" />
+    </Grid>
+</Window>

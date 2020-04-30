@@ -1,0 +1,11 @@
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\bin\Release\somestrangeproject.exe
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\bin\Release\somestrangeproject.pdb
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\MainWindow.baml
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\MainWindow.g.cs
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\App.g.cs
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\somestrangeproject_MarkupCompile.cache
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\somestrangeproject.g.resources
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\somestrangeproject.Properties.Resources.resources
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\somestrangeproject.csproj.GenerateResource.Cache
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\somestrangeproject.exe
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\somestrangeproject\somestrangeproject\obj\x86\Release\somestrangeproject.pdb
