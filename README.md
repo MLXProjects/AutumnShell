@@ -2,7 +2,7 @@
 Custom shell for Windows 7 x86 made in C# using WPF and .NET 4.0 
 
 Thanks to ChrisP1118 for his work on [making global system hooks possible on C#](https://www.codeproject.com/Articles/18638/Using-Window-Messages-to-Implement-Global-System-H) and Alexei Stryker for [making ChrisP1118's project work on WPF](https://legacyofvoid.wordpress.com/2011/11/16/global-system-hooks-in-c/).  
-I'll upload the currently used GlobalHooks source as a separate repo (for now just include a x86 DLL)
+GlobalSystemHooks for C# (source of GlobalHooks.dll): https://github.com/MLXProjects/GlobalSystemHooks
   
 # Description: 
 It's just a custom Windows shell, which can be used as replacement for explorer.exe (current version has no file manager though)  
