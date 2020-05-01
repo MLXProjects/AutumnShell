@@ -16,3 +16,4 @@ C:\Users\Michael\Documents\Visual Studio 2010\Projects\AutumnProject\AutumnProje
 C:\Users\Michael\Documents\Visual Studio 2010\Projects\AutumnProject\AutumnProject\obj\x86\Debug\AutumnProject_MarkupCompile.lref
 C:\Users\Michael\Documents\Visual Studio 2010\Projects\AutumnProject\AutumnProject\obj\x86\Debug\Settings.baml
 C:\Users\Michael\Documents\Visual Studio 2010\Projects\AutumnProject\AutumnProject\obj\x86\Debug\Settings.g.cs
+C:\Users\Michael\Documents\Visual Studio 2010\Projects\AutumnProject\AutumnProject\obj\x86\Debug\AutumnProject_Content.g.cs

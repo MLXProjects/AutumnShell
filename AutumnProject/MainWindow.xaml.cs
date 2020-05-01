@@ -216,7 +216,6 @@ namespace autumn
                         appbtn.ToolTip = appbtn.ToolTip.ToString().Substring(8);
                         appbtn.Background = Brushes.Blue;// new SolidColorBrush(Color.FromArgb(255, Brushes.Blue.Color.R, Brushes.Blue.Color.G, Brushes.Blue.Color.B));                        
                     }
-                    break;
                 }
                 else
                 {
@@ -318,7 +317,7 @@ namespace autumn
         
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult res = MessageBox.Show("Do you want to close the shell?", "", MessageBoxButton.OKCancel);
+            MessageBoxResult res = MessageBox.Show("Do you want to close the shell?", "Close? ;-;", MessageBoxButton.OKCancel);
             if (res == MessageBoxResult.Cancel)
             {
                 e.Cancel = true;

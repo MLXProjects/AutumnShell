@@ -21,7 +21,7 @@
                         <Image Source="{Binding FileIcon}" Height="64" Width="64" ToolTip="{Binding FileName}"  />
                         <TextBlock TextAlignment="Center" Height="32" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Text="{Binding FileName}" ToolTip="{Binding FileName}">
                             <TextBlock.Effect>
-                                <DropShadowEffect ShadowDepth="10" Color="White" Direction="200"/>
+                                <DropShadowEffect Color="White" BlurRadius="3"/>
                             </TextBlock.Effect>
                         </TextBlock>
                     </StackPanel>

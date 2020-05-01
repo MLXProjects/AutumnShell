@@ -253,11 +253,22 @@ namespace Wilsons {
                 _MsgID_Shell_WindowDestroyed = RegisterWindowMessage("WILSON_HOOK_HSHELL_WINDOWDESTROYED");
 
                 // Start the hook
-                InitializeShellHook(0, _Handle);
+                try
+                {
+                    InitializeShellHook(0, _Handle);
+                }
+                catch 
+                {
+                    System.Windows.MessageBox.Show("GlobalHooks.dll module can't be loaded, so the taskbar may not work correctly. \nIs recommended that you re-download this program.", "error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                }
             }
 
             protected override void OnStop() {
-                UninitializeShellHook();
+                try
+                {
+                    UninitializeShellHook();
+                }
+                catch { }
             }
 
             public override void ProcessWindowMessage(int msg, IntPtr wParam, IntPtr lParam) {
