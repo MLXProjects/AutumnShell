@@ -123,13 +123,19 @@ namespace autumn
                 bool isDirectory = Directory.Exists(item.FullPath);
                 if (isDirectory)
                 {
-                    //this should call our custom file manager (not yet implemented).
-                    //filemgr FM = new filemgr(item.FullPath, false);
-                    //For now, we'll rely on original Explorer's FM
-                    Process.Start(explorerpath, item.FullPath);
+                    //this should call our custom file manager (being implemented).
+                    filemgr FM = new filemgr(item.FullPath, false);
+                    FM.Show();
+                    //For now, we'll stop relying on original Explorer's FM
+                    //Process.Start(explorerpath, item.FullPath);
                 }
                 else
-                    Process.Start(item.FullPath);
+                {
+                    if (item.FullPath.Substring(item.FullPath.Length - 4) == ".lnk" && Directory.Exists(filemgr.GetShortcutTargetFile(item.FullPath)))
+                        (new filemgr(filemgr.GetShortcutTargetFile(item.FullPath), false)).Show();
+                    else
+                        Process.Start(item.FullPath);
+                }
             }
         }
 
@@ -192,7 +198,7 @@ namespace autumn
         {
             AppsMenu appsmenu = new AppsMenu(this.Height - bottomPanel.Height, this.Left);
             appsmenu.Show();
-            appsmenu.Closed += (s, args) => { if (appsmenu.CloseShell) this.Close(); };
+            appsmenu.Closed += (s, args) => { if (appsmenu.CloseShell) try { this.Close(); } catch { /* tried to close while close dialog present */ } };
         }
 
         public void appbtn_Click(object sender, RoutedEventArgs e)
@@ -214,13 +220,13 @@ namespace autumn
                     if (appbtn.ToolTip.ToString().Substring(0, 8) == "Active: ")
                     {
                         appbtn.ToolTip = appbtn.ToolTip.ToString().Substring(8);
-                        appbtn.Background = Brushes.Blue;// new SolidColorBrush(Color.FromArgb(255, Brushes.Blue.Color.R, Brushes.Blue.Color.G, Brushes.Blue.Color.B));                        
+                        appbtn.Background = new SolidColorBrush(Color.FromArgb(200, Brushes.Blue.Color.R, Brushes.Blue.Color.G, Brushes.Blue.Color.B));                        
                     }
                 }
                 else
                 {
                     appbtn.ToolTip = "Active: " + appbtn.ToolTip;
-                    appbtn.Background = Brushes.DarkCyan;//new SolidColorBrush(Color.FromArgb(255, Brushes.Cyan.Color.R, Brushes.Cyan.Color.G, Brushes.Cyan.Color.B));
+                    appbtn.Background = new SolidColorBrush(Color.FromArgb(200, Brushes.Cyan.Color.R, Brushes.Cyan.Color.G, Brushes.Cyan.Color.B));
                 }
             }
         }

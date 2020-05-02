@@ -3,19 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="" Height="415" Width="448" Name="fmWin" Loaded="fmWin_Loaded">
     <Grid>
-        <ListView Height="353" HorizontalAlignment="Left" Margin="0,31,0,0" Name="dirlist" VerticalAlignment="Top" Width="426">
+        <ListView Name="dirlist" MouseDoubleClick="dirlist_MouseDoubleClick"  ScrollViewer.VerticalScrollBarVisibility="Visible" Height="336" VerticalAlignment="Bottom" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Width="80" Height="100" >
-                        <Image Source="{Binding ImageData}" HorizontalAlignment="Center" Width="64" Height="64" />
-                        <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width=""/>
+                    <StackPanel Orientation="Vertical" Width="80" Height="100" Tag="{Binding FullPath}" VerticalAlignment="Center">
+                        <Image Source="{Binding FileIcon}" Height="64" Width="64" ToolTip="{Binding FileName}"  />
+                        <TextBlock TextAlignment="Center" Height="32" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" Text="{Binding FileName}" ToolTip="{Binding FileName}">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="White" BlurRadius="3"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ComboBox Height="23" HorizontalAlignment="Left" Margin="63,0,0,0" Name="pathBox" VerticalAlignment="Top" Width="321" IsEditable="True" Text="C:\" />
-        <Button Content="&lt;" Height="23" HorizontalAlignment="Left" Margin="6,-1,0,0" Name="backBtn" VerticalAlignment="Top" Width="23" IsEnabled="False" />
-        <Button Content="&gt;" Height="23" HorizontalAlignment="Left" Margin="34,-1,0,0" Name="nextBtn" VerticalAlignment="Top" Width="23" IsEnabled="False" />
-        <Button Content="-&gt;" Height="23" HorizontalAlignment="Left" Margin="390,0,0,0" Name="button1" VerticalAlignment="Top" Width="30" />
+        <ComboBox Height="23" Margin="63,12,42,0" Name="pathBox" VerticalAlignment="Top" IsEditable="True" Text="C:\" />
+        <Button Content="&lt;" Height="23" HorizontalAlignment="Left" Margin="6,11,0,0" Name="backBtn" VerticalAlignment="Top" Width="23" IsEnabled="False" />
+        <Button Content="&gt;" Height="23" HorizontalAlignment="Left" Margin="34,11,0,0" Name="nextBtn" VerticalAlignment="Top" Width="23" IsEnabled="False" />
+        <Button Content="-&gt;" Height="23" HorizontalAlignment="Right" Margin="0,12,6,0" Name="goBtn" VerticalAlignment="Top" Width="30" Click="goBtn_Click" />
     </Grid>
 </Window>
