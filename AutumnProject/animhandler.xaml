@@ -1,0 +1,8 @@
+﻿<Window x:Class="autumn.animhandler"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="animhandler" Height="311" Width="322" AllowsTransparency="True" WindowStyle="None" WindowState="Maximized" Name="animhandlerWin">
+    <Grid>
+        <Image Height="106" HorizontalAlignment="Left" Margin="77,68,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="136" />
+    </Grid>
+</Window>

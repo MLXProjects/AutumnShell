@@ -22,12 +22,17 @@ namespace autumn
 {
     public partial class MainWindow : Window
     {
+
+        public delegate void ShouldAnimate();
+        public event ShouldAnimate animateSomething;
         RegistryKey regpath;
         string wppath;
         private GlobalHooks globalHook;
         string explorerpath = @"C:\Windows\explorer.exe";
         RegistryKey winlogonpath;
         int AutoRestartShell;
+        animhandler AnimHandler;
+        public bool UseNewFM = true;
 
         public MainWindow()
         {
@@ -57,9 +62,11 @@ namespace autumn
             globalHook.Shell.WindowCreated += new GlobalHooks.WindowEventHandler(Shell_WindowCreated);
             globalHook.Shell.WindowDestroyed += new GlobalHooks.WindowEventHandler(Shell_WindowDestroyed);
             globalHook.Shell.Start();
+            ReadRegSettings();
             DesktopRefresh();
             UpdateWinList();
-            ReadRegSettings();
+            AnimHandler = new animhandler();
+            AnimHandler.Show();
         }
 
         #region desktop management
@@ -70,12 +77,14 @@ namespace autumn
             if (regpath != null)
             {
                 wppath = (string)regpath.GetValue("WallpaperPath");
+                UseNewFM = (bool)regpath.GetValue("UseNewFM");
             }
             else
             {
                 try {
                     regpath = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\AutumnShell", RegistryKeyPermissionCheck.ReadWriteSubTree);
                     regpath.SetValue("WallpaperPath", @"");
+                    regpath.SetValue("UseNewFM", 1, RegistryValueKind.DWord);
                     }
                 catch (Exception ex) { MessageBox.Show("Error saving settings: " + ex.ToString()); }
             }
@@ -123,16 +132,24 @@ namespace autumn
                 bool isDirectory = Directory.Exists(item.FullPath);
                 if (isDirectory)
                 {
-                    //this should call our custom file manager (being implemented).
-                    filemgr FM = new filemgr(item.FullPath, false);
-                    FM.Show();
-                    //For now, we'll stop relying on original Explorer's FM
-                    //Process.Start(explorerpath, item.FullPath);
+                    if (UseNewFM)
+                    {
+                        filemgr FM = new filemgr(item.FullPath, false);
+                        animateSomething();
+                        FM.Show();
+                    }
+                    else 
+                        Process.Start(explorerpath, item.FullPath);
                 }
                 else
                 {
                     if (item.FullPath.Substring(item.FullPath.Length - 4) == ".lnk" && Directory.Exists(filemgr.GetShortcutTargetFile(item.FullPath)))
+                    {
+                        if (UseNewFM)
                         (new filemgr(filemgr.GetShortcutTargetFile(item.FullPath), false)).Show();
+                        else
+                            Process.Start(explorerpath, item.FullPath);
+                    }
                     else
                         Process.Start(item.FullPath);
                 }
@@ -333,7 +350,6 @@ namespace autumn
             }
             base.OnClosing(e);
         }
-
 
         private void winMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

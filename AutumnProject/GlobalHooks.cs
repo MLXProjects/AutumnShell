@@ -40,7 +40,7 @@ namespace Wilsons {
         }
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled) {
-            System.Windows.MessageBox.Show(_Shell.ProcessWindowMessage(msg, wParam, lParam).ToString());
+            System.Diagnostics.Debug.WriteLine(_Shell.ProcessWindowMessage(msg, wParam, lParam).ToString());
             return IntPtr.Zero;
         }
 
