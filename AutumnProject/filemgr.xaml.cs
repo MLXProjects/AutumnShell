@@ -116,7 +116,6 @@ namespace autumn
             }
         }
 
-
         public static string GetShortcutTargetFile(string shortcutFilename)
         {
             string pathOnly = System.IO.Path.GetDirectoryName(shortcutFilename);

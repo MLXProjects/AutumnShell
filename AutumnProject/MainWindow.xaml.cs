@@ -233,19 +233,22 @@ namespace autumn
         #endregion taskbar
 
         #region winhooks
-        public void Shell_WindowDestroyed(IntPtr Handle)
+        public IntPtr Shell_WindowDestroyed(IntPtr Handle)
         {
             UpdateWinList();
+            return IntPtr.Zero;
         }
 
-        public void Shell_WindowCreated(IntPtr Handle)
+        public IntPtr Shell_WindowCreated(IntPtr Handle)
         {
             UpdateWinList();
+            return IntPtr.Zero;
         }
 
-        public void Shell_WindowActivated(IntPtr Handle)
+        public IntPtr Shell_WindowActivated(IntPtr Handle)
         {
             HighlightButton(Handle);
+            return IntPtr.Zero;
         }
         #endregion winhooks
 
